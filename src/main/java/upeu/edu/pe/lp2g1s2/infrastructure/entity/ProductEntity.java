@@ -31,4 +31,13 @@ public class ProductEntity {
     public ProductEntity() {
         this.setCode(UUID.randomUUID().toString());
     }
+
+    @Override
+    public String toString() {
+        return "Product{" + "id=" + id + ", code=" + code + ", name=" + name
+                + ", description=" + description + ", image=" + image
+                + ", price=" + price + ", dateCreated=" + dateCreated
+                + ", dateUpdated=" + dateUpdated + ", user=" + userEntity + '}';
+    }
+
 }
