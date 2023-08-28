@@ -15,6 +15,7 @@ public class StockEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    
     private String descripcion;
     private String entradas;
     private String salidas;
