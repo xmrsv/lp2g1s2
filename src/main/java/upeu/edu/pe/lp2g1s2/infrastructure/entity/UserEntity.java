@@ -1,6 +1,8 @@
 package upeu.edu.pe.lp2g1s2.infrastructure.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,4 +29,7 @@ public class UserEntity {
     private String address;
     private String cellphone;
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    private UserType userType;
 }

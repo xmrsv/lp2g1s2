@@ -1,4 +1,4 @@
-package upeu.edu.pe.lp2g1s2.infrastructure.adapter;
+package upeu.edu.pe.lp2g1s2.infrastructure.entity.adapter;
 
 import org.springframework.data.repository.CrudRepository;
 import upeu.edu.pe.lp2g1s2.infrastructure.entity.ProductEntity;
