@@ -101,23 +101,8 @@ public class ProductEntity {
         this.userEntity = userEntity;
     }
 
-    
-    
-    /*
-    
-    
     @Override
     public String toString() {
-        return "Product{" + "id=" + id + ", code=" + code + ", name=" + name
-                + ", description=" + description + ", image=" + image
-                + ", price=" + price + ", dateCreated=" + dateCreated
-                + ", dateUpdated=" + dateUpdated + ", user=" + userEntity + '}';
-    }
-
-     */
-
-    @Override
-    public String toString() {
-        return "ProductEntity{" + "id=" + id + ", code=" + code + ", name=" + name + ", description=" + description + ", price=" + price + ", image=" + image + ", dateCreated=" + dateCreated + ", dateUpdated=" + dateUpdated + ", userEntity=" + userEntity + '}';
+        return "ProductEntity{" + "id=" + id + ", code=" + code + ", name=" + name + ", description=" + description + ", image=" + image + ", price=" + price + ", dateCreate=" + dateCreated + ", dateUpdate=" + dateUpdated + ", userEntity=" + userEntity + '}';
     }
 }

@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,7 @@ public class UserEntity {
     private String address;
     private String cellphone;
     private String password;
+    private LocalDateTime dateCreated;
 
     @Enumerated(EnumType.STRING)
     private UserType userType;

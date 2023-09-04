@@ -15,17 +15,26 @@ public class StockEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
+
     private String descripcion;
     private String entradas;
     private String salidas;
     private String balance;
-    
+
     @ManyToOne
     @JoinColumn(name = "product_id")
     private ProductEntity productEntity;
 
     public StockEntity() {
+    }
+
+    public StockEntity(Integer id, String descripcion, String entradas, String salidas, String balance, ProductEntity productEntity) {
+        this.id = id;
+        this.descripcion = descripcion;
+        this.entradas = entradas;
+        this.salidas = salidas;
+        this.balance = balance;
+        this.productEntity = productEntity;
     }
 
     public Integer getId() {
@@ -75,6 +84,5 @@ public class StockEntity {
     public void setProductEntity(ProductEntity productEntity) {
         this.productEntity = productEntity;
     }
-    
-    
+
 }

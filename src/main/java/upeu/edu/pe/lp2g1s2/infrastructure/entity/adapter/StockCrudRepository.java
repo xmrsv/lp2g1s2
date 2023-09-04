@@ -8,5 +8,4 @@ import upeu.edu.pe.lp2g1s2.infrastructure.entity.StockEntity;
 public interface StockCrudRepository extends CrudRepository<StockEntity, Integer> {
 
     List<StockEntity> getStockByProduct(ProductEntity productEntity);
-
 }
