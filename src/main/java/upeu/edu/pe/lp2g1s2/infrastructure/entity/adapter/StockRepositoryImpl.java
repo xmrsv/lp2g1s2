@@ -22,7 +22,7 @@ public class StockRepositoryImpl implements StockRepository {
 
     @Override
     public List<StockEntity> getStockByProductEntity(ProductEntity productEntity) {
-        return stockCrudRepository.getStockByProduct(productEntity);
+        return stockCrudRepository.getStockByProductEntity(productEntity);
     }
 
 }
