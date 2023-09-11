@@ -1,5 +1,6 @@
 package upeu.edu.pe.lp2g1s2.infrastructure.entity.controller;
 
+import java.io.IOException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,8 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import upeu.edu.pe.lp2g1s2.app.service.ProductService;
 import upeu.edu.pe.lp2g1s2.infrastructure.entity.ProductEntity;
 import upeu.edu.pe.lp2g1s2.infrastructure.entity.UserEntity;
@@ -26,8 +29,11 @@ public class ProductController {
 
     //guardar product
     @PostMapping("/save-product")
-    public String saveProduct(@RequestBody ProductEntity productEntity) {
-        return productService.saveProduct(productEntity).toString();
+    public String saveProduct(ProductEntity productEntity,
+            @RequestParam("img") MultipartFile multipartFile)
+            throws IOException {
+        return productService
+                .saveProduct(productEntity, multipartFile).toString();
     }
 
     //ver productos
@@ -45,7 +51,8 @@ public class ProductController {
 
     @PutMapping("/edit/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public ProductEntity editProduct(@RequestBody ProductEntity product, @PathVariable Integer id) {
+    public ProductEntity editProduct(@RequestBody ProductEntity product,
+            @PathVariable Integer id) {
         ProductEntity productActual = productService.getProductById(id);
         productActual.setDescription(product.getDescription());
         productActual.setName(product.getName());

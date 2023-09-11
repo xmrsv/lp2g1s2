@@ -1,6 +1,5 @@
 package upeu.edu.pe.lp2g1s2.infrastructure.entity.controller;
 
-import java.math.BigDecimal;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,7 +43,9 @@ public class ProductControllerApi {
 
     @PutMapping("/edit/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public ProductEntity editProductEntity(@RequestBody ProductEntity productEntity, @PathVariable Integer id) {
+    public ProductEntity editProductEntity(
+            @RequestBody ProductEntity productEntity,
+            @PathVariable Integer id) {
         ProductEntity productActual = new ProductEntity();
 
         productActual.setName(productEntity.getName());
