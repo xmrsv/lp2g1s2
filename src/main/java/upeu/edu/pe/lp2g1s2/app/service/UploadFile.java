@@ -19,13 +19,11 @@ public class UploadFile {
             Files.write(path, imageBytes);
             return multipartFile.getOriginalFilename();
         }
-
         return IMG_DEFAULT;
     }
 
     public void delete(String filename) {
         File file = new File(FOLDER + filename);
         file.delete();
-
     }
 }

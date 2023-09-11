@@ -17,7 +17,8 @@ public class StockService {
         return stockRepository.saveStock(stockEntity);
     }
 
-    public List<StockEntity> getStockByProduct(ProductEntity productEntity) {
+    public List<StockEntity> getStockByProductEntity(
+            ProductEntity productEntity) {
         return stockRepository.getStockByProductEntity(productEntity);
     }
 }

@@ -64,8 +64,10 @@ public class ProductService {
                 product.setImage(uploadFile.upload(multipartFile));
             }
             product.setCode(productEntityDatabase.getCode());
-            product.setUserEntity(productEntityDatabase.getUserEntity());
-            product.setDateCreated(productEntityDatabase.getDateCreated());
+            product.setUserEntity(productEntityDatabase.
+                    getUserEntity());
+            product.setDateCreated(productEntityDatabase.
+                    getDateCreated());
             product.setDateUpdated(LocalDateTime.now());
             return productRepository.saveProduct(product);
         }

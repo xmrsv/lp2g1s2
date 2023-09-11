@@ -9,5 +9,4 @@ public class Lp2g1s2Application {
     public static void main(String[] args) {
         SpringApplication.run(Lp2g1s2Application.class, args);
     }
-
 }

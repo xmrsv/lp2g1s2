@@ -1,7 +1,6 @@
 package upeu.edu.pe.lp2g1s2.app.domain;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
 
 public class ItemCart {
 
@@ -15,7 +14,8 @@ public class ItemCart {
         return price.multiply(BigDecimal.valueOf(quantity));
     }
 
-    public ItemCart(Integer id, String nameProduct, Integer quantity, BigDecimal price) {
+    public ItemCart(Integer id, String nameProduct, Integer quantity,
+            BigDecimal price) {
         this.id = id;
         this.nameProduct = nameProduct;
         this.quantity = quantity;
@@ -63,6 +63,4 @@ public class ItemCart {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
-
-    
 }

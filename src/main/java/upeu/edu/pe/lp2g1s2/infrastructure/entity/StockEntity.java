@@ -17,9 +17,9 @@ public class StockEntity {
     private Integer id;
 
     private String descripcion;
-    private String entradas;
-    private String salidas;
-    private String balance;
+    private Integer entradas;
+    private Integer salidas;
+    private Integer balance;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
@@ -28,7 +28,7 @@ public class StockEntity {
     public StockEntity() {
     }
 
-    public StockEntity(Integer id, String descripcion, String entradas, String salidas, String balance, ProductEntity productEntity) {
+    public StockEntity(Integer id, String descripcion, Integer entradas, Integer salidas, Integer balance, ProductEntity productEntity) {
         this.id = id;
         this.descripcion = descripcion;
         this.entradas = entradas;
@@ -53,27 +53,27 @@ public class StockEntity {
         this.descripcion = descripcion;
     }
 
-    public String getEntradas() {
+    public Integer getEntradas() {
         return entradas;
     }
 
-    public void setEntradas(String entradas) {
+    public void setEntradas(Integer entradas) {
         this.entradas = entradas;
     }
 
-    public String getSalidas() {
+    public Integer getSalidas() {
         return salidas;
     }
 
-    public void setSalidas(String salidas) {
+    public void setSalidas(Integer salidas) {
         this.salidas = salidas;
     }
 
-    public String getBalance() {
+    public Integer getBalance() {
         return balance;
     }
 
-    public void setBalance(String balance) {
+    public void setBalance(Integer balance) {
         this.balance = balance;
     }
 
@@ -84,5 +84,4 @@ public class StockEntity {
     public void setProductEntity(ProductEntity productEntity) {
         this.productEntity = productEntity;
     }
-
 }

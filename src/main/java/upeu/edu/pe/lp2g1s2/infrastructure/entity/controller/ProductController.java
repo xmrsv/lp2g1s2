@@ -27,7 +27,7 @@ public class ProductController {
         this.productService = productService;
     }
 
-    //guardar product
+    // Insertar producto
     @PostMapping("/save-product")
     public String saveProduct(ProductEntity productEntity,
             @RequestParam("img") MultipartFile multipartFile)
@@ -36,7 +36,7 @@ public class ProductController {
                 .saveProduct(productEntity, multipartFile).toString();
     }
 
-    //ver productos
+    // Ver productos
     @GetMapping("/show")
     public Iterable<ProductEntity> showProduct() {
         UserEntity user = new UserEntity();
@@ -44,11 +44,13 @@ public class ProductController {
         return productService.getProductsByUser(user);
     }
 
+    // Ver producto por id
     @GetMapping("/show/{id}")
     public ProductEntity show(@PathVariable Integer id) {
         return productService.getProductById(id);
     }
 
+    // Editar producto por id
     @PutMapping("/edit/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public ProductEntity editProduct(@RequestBody ProductEntity product,
@@ -58,10 +60,11 @@ public class ProductController {
         productActual.setName(product.getName());
         productActual.setPrice(product.getPrice());
         productActual.setUserEntity(product.getUserEntity());
-        return productService.saveProduct(productActual);
+        // return productService.saveProduct(productActual);
+        return null;
         // log.info("Product obtenido: {}", product);
-        //model.addAttribute("product", product);
-        //return "admin/products/edit";
+        // model.addAttribute("product", product);
+        // return "admin/products/edit";
     }
 
     @DeleteMapping("/delete/{id}")

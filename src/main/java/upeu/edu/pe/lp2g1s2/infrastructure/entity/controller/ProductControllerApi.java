@@ -26,7 +26,8 @@ public class ProductControllerApi {
 
     @PostMapping("/save-product")
     public String saveProduct(@RequestBody ProductEntity productEntity) {
-        return productService.saveProduct(productEntity).toString();
+        // return productService.saveProduct(productEntity).toString();
+        return null;
     }
 
     @GetMapping("/show")
@@ -55,7 +56,8 @@ public class ProductControllerApi {
         productActual.setDateCreated(productEntity.getDateCreated());
         productActual.setDateUpdated(productEntity.getDateUpdated());
 
-        return productService.saveProduct(productActual);
+        // return productService.saveProduct(productActual);
+        return null;
     }
 
     @DeleteMapping("/delete/{id}")
