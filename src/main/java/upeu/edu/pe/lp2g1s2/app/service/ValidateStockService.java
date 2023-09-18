@@ -40,9 +40,9 @@ public class ValidateStockService {
      */
     public StockEntity calculateBalance(StockEntity stock) {
         if (stock.getEntries() != 0) {
-            calculateBalanceForEntradas(stock);
+            calculateBalanceForEntries(stock);
         } else {
-            calculateBalanceForSalidas(stock);
+            calculateBalanceForExits(stock);
         }
         return stock;
     }
@@ -52,7 +52,7 @@ public class ValidateStockService {
      *
      * @param stock StockEntity que contiene información de entradas y producto.
      */
-    private void calculateBalanceForEntradas(StockEntity stock) {
+    private void calculateBalanceForEntries(StockEntity stock) {
         if (existBalance(stock.getProductEntity())) {
             List<StockEntity> stockList = stockService.getStockByProductEntity(stock.getProductEntity());
             Integer balance = stockList.get(stockList.size() - 1).getBalance();
@@ -67,7 +67,7 @@ public class ValidateStockService {
      *
      * @param stock StockEntity que contiene información de salidas y producto.
      */
-    private void calculateBalanceForSalidas(StockEntity stock) {
+    private void calculateBalanceForExits(StockEntity stock) {
         List<StockEntity> stockList = stockService.getStockByProductEntity(stock.getProductEntity());
         Integer balance = stockList.get(stockList.size() - 1).getBalance();
         stock.setBalance(balance - stock.getExits());
