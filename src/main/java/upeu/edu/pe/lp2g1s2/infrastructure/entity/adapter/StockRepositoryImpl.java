@@ -6,6 +6,10 @@ import upeu.edu.pe.lp2g1s2.app.repository.StockRepository;
 import upeu.edu.pe.lp2g1s2.infrastructure.entity.ProductEntity;
 import upeu.edu.pe.lp2g1s2.infrastructure.entity.StockEntity;
 
+/**
+ * Implementación del repositorio de registros de stock utilizando Spring Data
+ * JPA.
+ */
 @Repository
 public class StockRepositoryImpl implements StockRepository {
 
@@ -24,5 +28,4 @@ public class StockRepositoryImpl implements StockRepository {
     public List<StockEntity> getStockByProductEntity(ProductEntity productEntity) {
         return stockCrudRepository.getStockByProductEntity(productEntity);
     }
-
 }

@@ -1,39 +1,49 @@
 package upeu.edu.pe.lp2g1s2.infrastructure.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 public class OrderEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "date_order")
     private LocalDateTime dateOrder;
+
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "user_id") // Nombre de la columna
+    @JoinColumn(name = "user_id")
     private UserEntity userEntity;
+
+    @OneToMany(mappedBy = "order")
+    private List<OrderDetailEntity> orderDetails;
 
     public OrderEntity() {
     }
 
-    public OrderEntity(Integer id, LocalDateTime dateOrder, String status, UserEntity userEntity) {
+    public OrderEntity(Integer id, LocalDateTime dateOrder, String status, UserEntity userEntity, List<OrderDetailEntity> orderDetails) {
         this.id = id;
         this.dateOrder = dateOrder;
         this.status = status;
         this.userEntity = userEntity;
+        this.orderDetails = orderDetails;
     }
 
+    // Getters y setters
     public Integer getId() {
         return id;
     }
@@ -66,9 +76,21 @@ public class OrderEntity {
         this.userEntity = userEntity;
     }
 
-    @Override
-    public String toString() {
-        return "OrderEntity{" + "id=" + id + ", dateOrder=" + dateOrder + ", status=" + status + ", userEntity=" + userEntity + '}';
+    public List<OrderDetailEntity> getOrderDetails() {
+        return orderDetails;
     }
 
+    public void setOrderDetails(List<OrderDetailEntity> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderEntity{"
+                + "id=" + id
+                + ", dateOrder=" + dateOrder
+                + ", status='" + status + '\''
+                + ", userEntity=" + userEntity
+                + '}';
+    }
 }

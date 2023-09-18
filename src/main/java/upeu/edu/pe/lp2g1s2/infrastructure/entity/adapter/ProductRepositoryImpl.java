@@ -5,6 +5,9 @@ import upeu.edu.pe.lp2g1s2.app.repository.ProductRepository;
 import upeu.edu.pe.lp2g1s2.infrastructure.entity.ProductEntity;
 import upeu.edu.pe.lp2g1s2.infrastructure.entity.UserEntity;
 
+/**
+ * Implementación del repositorio de productos utilizando Spring Data JPA.
+ */
 @Repository
 public class ProductRepositoryImpl implements ProductRepository {
 
@@ -16,6 +19,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public Iterable<ProductEntity> getProducts() {
+        // Método propio de Spring Data JPA
         return productCrudRepository.findAll();
     }
 
@@ -25,7 +29,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
-    public ProductEntity getProuctById(Integer id) {
+    public ProductEntity getProductById(Integer id) {
         return productCrudRepository.findById(id).get();
     }
 
@@ -38,5 +42,4 @@ public class ProductRepositoryImpl implements ProductRepository {
     public void deleteProductById(Integer id) {
         productCrudRepository.deleteById(id);
     }
-
 }

@@ -1,37 +1,71 @@
 package upeu.edu.pe.lp2g1s2.app.domain;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.math.BigDecimal;
 
+/**
+ * Representa un artículo en un carrito de compras.
+ */
+@Entity
+@Table(name = "item_cart")
 public class ItemCart {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String nameProduct;
+
+    @Column(name = "product_name")
+    private String productName;
+
     private Integer quantity;
     private BigDecimal price;
 
-    // Calcula el total del precio por item
+    /**
+     * Constructor para crear un nuevo artículo en el carrito.
+     *
+     * @param id El identificador único del artículo.
+     * @param nameProduct El nombre del producto.
+     * @param quantity La cantidad de este artículo en el carrito.
+     * @param price El precio unitario del artículo.
+     */
+    public ItemCart(Integer id, String nameProduct, Integer quantity, BigDecimal price) {
+        this.id = id;
+        this.productName = nameProduct;
+        setQuantity(quantity); // Validamos la cantidad al asignarla.
+        this.price = price;
+    }
+
+    /**
+     * Calcula el precio total por artículo multiplicando la cantidad por el
+     * precio unitario.
+     *
+     * @return El precio total por artículo.
+     */
     public BigDecimal getTotalPricePerItem() {
         return price.multiply(BigDecimal.valueOf(quantity));
     }
 
-    public ItemCart(Integer id, String nameProduct, Integer quantity,
-            BigDecimal price) {
-        this.id = id;
-        this.nameProduct = nameProduct;
-        this.quantity = quantity;
-        this.price = price;
-    }
-
+    /**
+     * Devuelve una representación de cadena de este artículo en el carrito.
+     *
+     * @return Una cadena que representa el artículo en el carrito.
+     */
     @Override
     public String toString() {
         return "ItemCart{"
                 + "id=" + id
-                + ", nameProduct=" + nameProduct
+                + ", nameProduct='" + productName + '\''
                 + ", quantity=" + quantity
                 + ", price=" + price
                 + '}';
     }
 
+    // Getters y setters
     public Integer getId() {
         return id;
     }
@@ -40,20 +74,28 @@ public class ItemCart {
         this.id = id;
     }
 
-    public String getNameProduct() {
-        return nameProduct;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setNameProduct(String nameProduct) {
-        this.nameProduct = nameProduct;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public Integer getQuantity() {
         return quantity;
     }
 
+    /**
+     * Establece la cantidad de este artículo en el carrito, validando que no
+     * sea negativa.
+     *
+     * @param quantity La cantidad a establecer.
+     */
     public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+        if (quantity >= 0) {
+            this.quantity = quantity;
+        }
     }
 
     public BigDecimal getPrice() {

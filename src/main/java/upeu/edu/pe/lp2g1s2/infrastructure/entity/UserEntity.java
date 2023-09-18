@@ -1,5 +1,6 @@
 package upeu.edu.pe.lp2g1s2.infrastructure.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -17,17 +18,45 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
     private String email;
+
     private String address;
+
     private String cellphone;
+
     private String password;
+
+    @Column(name = "date_created")
     private LocalDateTime dateCreated;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "user_type")
     private UserType userType;
+
+    public UserEntity() {
+    }
+
+    public UserEntity(Integer id, String username, String firstName, String lastName, String email, String address, String cellphone, String password, LocalDateTime dateCreated, UserType userType) {
+        this.id = id;
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.address = address;
+        this.cellphone = cellphone;
+        this.password = password;
+        this.dateCreated = dateCreated;
+        this.userType = userType;
+    }
 
     public Integer getId() {
         return id;
@@ -111,23 +140,17 @@ public class UserEntity {
 
     @Override
     public String toString() {
-        return "UserEntity{" + "id=" + id + ", username=" + username + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", address=" + address + ", cellphone=" + cellphone + ", password=" + password + ", dateCreated=" + dateCreated + ", userType=" + userType + '}';
+        return "UserEntity{"
+                + "id=" + id
+                + ", username='" + username + '\''
+                + ", firstName='" + firstName + '\''
+                + ", lastName='" + lastName + '\''
+                + ", email='" + email + '\''
+                + ", address='" + address + '\''
+                + ", cellphone='" + cellphone + '\''
+                + ", password='" + password + '\''
+                + ", dateCreated=" + dateCreated
+                + ", userType=" + userType
+                + '}';
     }
-
-    public UserEntity() {
-    }
-
-    public UserEntity(Integer id, String username, String firstName, String lastName, String email, String address, String cellphone, String password, LocalDateTime dateCreated, UserType userType) {
-        this.id = id;
-        this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.address = address;
-        this.cellphone = cellphone;
-        this.password = password;
-        this.dateCreated = dateCreated;
-        this.userType = userType;
-    }
-
 }

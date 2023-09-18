@@ -9,16 +9,16 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "stocks")
+@Table(name = "stock")
 public class StockEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String descripcion;
-    private Integer entradas;
-    private Integer salidas;
+    private String description;
+    private Integer entries;
+    private Integer exits;
     private Integer balance;
 
     @ManyToOne
@@ -28,11 +28,11 @@ public class StockEntity {
     public StockEntity() {
     }
 
-    public StockEntity(Integer id, String descripcion, Integer entradas, Integer salidas, Integer balance, ProductEntity productEntity) {
+    public StockEntity(Integer id, String description, Integer entries, Integer exits, Integer balance, ProductEntity productEntity) {
         this.id = id;
-        this.descripcion = descripcion;
-        this.entradas = entradas;
-        this.salidas = salidas;
+        this.description = description;
+        this.entries = entries;
+        this.exits = exits;
         this.balance = balance;
         this.productEntity = productEntity;
     }
@@ -45,28 +45,28 @@ public class StockEntity {
         this.id = id;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Integer getEntradas() {
-        return entradas;
+    public Integer getEntries() {
+        return entries;
     }
 
-    public void setEntradas(Integer entradas) {
-        this.entradas = entradas;
+    public void setEntries(Integer entries) {
+        this.entries = entries;
     }
 
-    public Integer getSalidas() {
-        return salidas;
+    public Integer getExits() {
+        return exits;
     }
 
-    public void setSalidas(Integer salidas) {
-        this.salidas = salidas;
+    public void setExits(Integer exits) {
+        this.exits = exits;
     }
 
     public Integer getBalance() {
@@ -83,5 +83,17 @@ public class StockEntity {
 
     public void setProductEntity(ProductEntity productEntity) {
         this.productEntity = productEntity;
+    }
+
+    @Override
+    public String toString() {
+        return "StockEntity{"
+                + "id=" + id
+                + ", description='" + description + '\''
+                + ", entries=" + entries
+                + ", exits=" + exits
+                + ", balance=" + balance
+                + ", productEntity=" + productEntity
+                + '}';
     }
 }
