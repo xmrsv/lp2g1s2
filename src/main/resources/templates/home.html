@@ -7,6 +7,20 @@
             <header class="jumbotron my-4">
                 <h1 class="display-3">¡Bienvenido a tu tienda en linea!</h1>
             </header>
+
+            <div class="row text-center">
+                <div class="col-lg-3 col-md-6 mb-4" th:each="product: ${products}">
+                    <div class="card h-100">
+                        <img th:src="@{images/{image} (img = ${product.image})}" alt="alt"/>
+                        <div class="card-body">
+                            <p class="card-text" th:text="${product.name}">Nombre del producto</p>
+                        </div>
+                        <div class="card-footer">
+                            <a class="btn btn-success" href="#">Ver producto</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="footer" th:insert="~{/user/template_user::footer}"></div>
     </body>
@@ -14,7 +28,7 @@
         .body {
             position: relative;
         }
-        
+
         .footer {
             position: absolute;
             bottom: 0;
