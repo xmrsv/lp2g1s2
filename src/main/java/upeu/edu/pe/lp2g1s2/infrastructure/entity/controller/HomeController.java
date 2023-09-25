@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/home") // Puede ser "/" y vacio para usar la ruta raíz
 public class HomeController {
-    
+
     @GetMapping
     public String home(Model model) {
-        model.addAttribute("titulo", model);
+        model.addAttribute("titulo",
+                "Bienvenido al ecommerce");
         return "home";
     }
 }
