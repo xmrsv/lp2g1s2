@@ -4,8 +4,22 @@
     <body>
         <div th:insert="~{/user/template_user::header}"></div>
         <div class="container">
-            <h1>Bienvenio a tu tienda en linea </h1>
+            <header class="jumbotron my-4">
+                <h1 class="display-3">¡Bienvenido a tu tienda en linea!</h1>
+            </header>
         </div>
-        <div th:insert="~{/user/template_user::footer}"></div>
+        <div class="footer" th:insert="~{/user/template_user::footer}"></div>
     </body>
+    <style>
+        .body {
+            position: relative;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 0;
+            height: 60px;
+            width: 100%;
+        }
+    </style>
 </html>
