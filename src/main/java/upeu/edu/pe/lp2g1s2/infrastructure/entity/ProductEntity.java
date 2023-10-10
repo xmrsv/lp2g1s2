@@ -7,26 +7,22 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name = "products")
 public class ProductEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String code;
     private String name;
     private String description;
-    private BigDecimal price;
     private String image;
+    private BigDecimal price;
 
     @Column(name = "date_created")
     private LocalDateTime dateCreated;
@@ -38,25 +34,21 @@ public class ProductEntity {
     @JoinColumn(name = "user_id")
     private UserEntity userEntity;
 
-    @OneToMany(mappedBy = "product")
-    private List<OrderDetailEntity> orderDetails;
+    public ProductEntity() {
+        this.setCode(UUID.randomUUID().toString());
+    }
 
-    public ProductEntity(Integer id, String code, String name, String description, BigDecimal price, String image, LocalDateTime dateCreated, LocalDateTime dateUpdated, UserEntity userEntity, List<OrderDetailEntity> orderDetails) {
+    public ProductEntity(Integer id, String code, String name, String description, String image, BigDecimal price,
+            LocalDateTime dateCreated, LocalDateTime dateUpdated, UserEntity userEntity) {
         this.id = id;
         this.code = code;
         this.name = name;
         this.description = description;
-        this.price = price;
         this.image = image;
+        this.price = price;
         this.dateCreated = dateCreated;
         this.dateUpdated = dateUpdated;
         this.userEntity = userEntity;
-        this.orderDetails = orderDetails;
-    }
-
-    public ProductEntity() {
-        // Generar un código único usando UUID al crear un nuevo producto
-        this.setCode(UUID.randomUUID().toString());
     }
 
     public Integer getId() {
@@ -91,20 +83,20 @@ public class ProductEntity {
         this.description = description;
     }
 
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
     public String getImage() {
         return image;
     }
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public LocalDateTime getDateCreated() {
@@ -131,27 +123,12 @@ public class ProductEntity {
         this.userEntity = userEntity;
     }
 
-    public List<OrderDetailEntity> getOrderDetails() {
-        return orderDetails;
-    }
-
-    public void setOrderDetails(List<OrderDetailEntity> orderDetails) {
-        this.orderDetails = orderDetails;
-    }
-
     @Override
     public String toString() {
-        return "ProductEntity{"
-                + "id=" + id
-                + ", code=" + code
-                + ", name=" + name
-                + ", description=" + description
-                + ", price=" + price
-                + ", image=" + image
-                + ", dateCreated=" + dateCreated
-                + ", dateUpdated=" + dateUpdated
-                + ", userEntity=" + userEntity
-                + ", orderDetails=" + orderDetails
-                + '}';
+        return "ProductEntity{" + "id=" + id + ", code=" + code + ", name=" + name + ", description=" + description
+                + ", image=" + image + ", price=" + price + ", dateCreate=" + dateCreated + ", dateUpdate="
+                + dateUpdated
+                + ", userEntity=" + userEntity + '}';
     }
+
 }

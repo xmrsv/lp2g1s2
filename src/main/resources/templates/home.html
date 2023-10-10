@@ -1,39 +1,59 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head th:insert="~{/user/template_user::head}"></head>
-    <body>
-        <div th:insert="~{/user/template_user::header}"></div>
-        <div class="container">
-            <header class="jumbotron my-4">
-                <h1 class="display-3">¡Bienvenido a tu tienda en linea!</h1>
-            </header>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
-            <div class="row text-center">
-                <div class="col-lg-3 col-md-6 mb-4" th:each="product: ${products}">
-                    <div class="card h-100">
-                        <img th:src="@{images/{image} (img = ${product.image})}" alt="alt"/>
-                        <div class="card-body">
-                            <p class="card-text" th:text="${product.name}">Nombre del producto</p>
-                        </div>
-                        <div class="card-footer">
-                            <a class="btn btn-success" href="#">Ver producto</a>
-                        </div>
-                    </div>
-                </div>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Inicio">
+    <link rel="stylesheet" th:href="@{/styles/home.css}">
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <title>Inicio</title>
+</head>
+
+<body>
+
+    <header>
+        <a th:href="@{/home}">Inicio</a>
+    </header>
+
+    <main>
+        <h1>¡Bienvenido a tu tienda en línea!</h1>
+
+
+        <div class="product-container">
+            <div class="product-card" th:each="product: ${products}">
+                <img class="card-img-top" th:src="@{images/{img} (img = ${product.image})}" alt="alt" />
+                <span class="text">
+                    <h2 class="title" th:text="${product.name}">name</h2>
+
+                    <p class="price">
+                        S/.
+                        <span th:text="${product.price}">price</span>
+                    </p>
+
+                    <p class="description" th:text="${product.description}">description</p>
+
+                    <a class="button" th:href="@{/product-detail/{productid} (productid = ${product.id})}"
+                        class="btn btn-success">Ver
+                        Producto</a>
+                </span>
             </div>
         </div>
-        <div class="footer" th:insert="~{/user/template_user::footer}"></div>
-    </body>
-    <style>
-        .body {
-            position: relative;
-        }
 
-        .footer {
-            position: absolute;
-            bottom: 0;
-            height: 60px;
-            width: 100%;
-        }
-    </style>
+    </main>
+
+
+    <footer>
+        <p>&copy; Strdst 2023</p>
+    </footer>
+
+</body>
+
 </html>
