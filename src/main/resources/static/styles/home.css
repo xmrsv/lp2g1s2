@@ -1,0 +1,74 @@
+/*
+    .-----------.
+    | Variables |
+    '-----------'
+*/
+
+:root {
+    --ghost-white: hsla(0, 0%, 100%, 97%);
+    --light-shadow: hsla(0, 0%, 0%, 3%);
+    --brand-green: hsl(139, 60%, 58%);
+    --pure-white: hsl(0, 0%, 100%);
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Libre Franklin", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h1 {
+    margin-block-end: 2rem;
+}
+
+img {
+    width: 100%;
+    max-width: 12rem;
+    background-color: var(--pure-white);
+    border-radius: 0.50rem;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border: 0.1rem solid hsla(0, 0%, 0%, 10%);
+
+}
+
+body {
+    width: 100dvw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+}
+
+main {
+    padding: 2rem;
+    width: 100%;
+    background-color: var(--light-shadow);
+}
+
+.product-container {
+    display: grid;
+    gap: 1rem;
+}
+
+.product-card {
+    width: fit-content;
+    border: 0.2rem solid hsla(0, 0%, 0%, 10%);
+    margin-block-end: 1rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    display: flex;
+}
+
+.product-card img {
+    margin-inline-end: 1rem;
+}
+
+
+

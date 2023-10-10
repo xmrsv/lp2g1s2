@@ -1,0 +1,320 @@
+/*
+    .------------.
+    | Variables |
+    '----------'
+*/
+
+:root {
+    --text-color: hsl(0, 0%, 93.5%);
+}
+
+/*
+    .----------------.
+    | Pre formatting |
+    '----------------'
+*/
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Libre Franklin', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+table,
+table tbody,
+table tbody th,
+table tbody tr,
+table tbody td {
+    border-width: 0;
+    border-spacing: 0;
+}
+
+summary::marker {
+    content: '';
+}
+
+li {
+    display: block;
+}
+
+/*
+    .---------.
+    | Styling |
+    '---------'
+*/
+
+.container {
+    /* 100 page height - (footer padding * vertical paddings + font size with line height */
+    height: calc(100dvh - 2.5rem);
+    display: grid;
+    grid-template-columns: minmax(12rem, 10%) minmax(auto, 90%);
+
+}
+
+
+ul {
+    margin-block-end: 1rem;
+}
+
+table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 1rem;
+}
+
+table tbody {
+    display: block;
+    overflow: hidden;
+}
+
+table tr:nth-child(odd) {
+    background-color: hsla(0, 0%, 0%, 0.03);
+
+}
+
+table tbody th,
+table tbody td,
+table tbody tr {
+    padding: 1rem;
+}
+
+table tbody tr:first-child {
+    border-radius: 0 1rem 0 0;
+}
+
+table tbody tr:last-child {
+    border-radius: 0 0 1rem 0;
+}
+
+
+table tbody th {
+    text-align: left;
+    background-color: hsla(0, 0%, 0%, 0.1);
+}
+
+table tbody td {
+    background-color: hsla(0, 0%, 0%, 0.05);
+}
+
+table tbody tr {
+    width: 100%;
+}
+
+aside {
+    background-color: hsl(0, 0%, 15%);
+    color: var(text-color);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+aside .farewell {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    color: var(--text-color);
+    border-bottom: 0.2rem solid hsla(0, 0%, 100%, 10%);
+}
+
+aside .farewell .title {
+    font-weight: 600;
+    margin-block-end: 0.5rem;
+}
+
+aside .navigation {
+    padding: 2rem;
+}
+
+aside .footer {
+    border-top: 0.2rem solid hsla(0, 0%, 100%, 10%);
+    border-bottom: 0.2rem solid hsla(0, 0%, 100%, 10%);
+    padding: 2rem;
+}
+
+aside .footer .icon {
+    max-width: 1rem;
+    margin-inline-end: 0.75rem;
+    fill: var(--text-color);
+}
+
+aside .footer .wrapper {
+    display: flex;
+    align-items: center;
+}
+
+aside .footer .text {
+    color: var(--text-color);
+}
+
+
+main {
+    padding: 1.5rem 3rem;
+    overflow: hidden;
+}
+
+main h1,
+main h2,
+main h3,
+main h4,
+main h5,
+main h6 {
+    margin-block: 1rem;
+}
+
+main p {
+    margin-block-end: 1rem;
+}
+
+
+details[open] {
+    display: block;
+    border-radius: 1rem;
+}
+
+details[open] .custom-button {
+    border-bottom: none;
+}
+
+details ul {
+    padding: 1rem;
+}
+
+details ul li {
+    margin-inline-start: 2rem;
+    display: list-item;
+    font-weight: 600;
+    margin-block-end: 0.75rem;
+}
+
+details ul a {
+    text-decoration: none;
+    color: inherit;
+}
+
+footer {
+    height: 2.5rem;
+    background-color: hsl(0, 0%, 15%);
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    color: hsl(0, 0%, 50%);
+    font-size: 0.8rem;
+}
+
+/*
+    .---------------------.
+    | Custom "components" |
+    '---------------------'
+*/
+
+.button-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-inline-end: 0.5rem;
+    fill: var(--text-color);
+}
+
+.list-item {
+    display: block;
+    margin-inline-start: 0;
+    margin-block-end: 1.5rem;
+
+}
+
+.custom-button {
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem;
+    color: var(--text-color);
+    transition: background-color 100ms ease-in-out;
+}
+
+.cards-container {
+    margin-block-start: 2rem;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (max-width: 900px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+}
+
+.card-dashboard.one {
+    background-color: hsl(149, 60%, 42%);
+    color: var(--text-color);
+}
+
+.card-dashboard.two {
+    background-color: hsl(218, 82%, 58%);
+    color: var(--text-color);
+}
+
+.card-dashboard {
+    text-decoration: none;
+    min-width: fit-content;
+    max-width: 100%;
+    border-radius: 1.5rem;
+    padding: 1.5rem calc(1.5rem * 1.75);
+}
+
+.card-dashboard .title {
+    display: flex;
+}
+
+.card-dashboard-text-content {
+    z-index: 3;
+    position: relative;
+}
+
+.card-dashboard-icon {
+    fill: hsl(149, 54%, 32%);
+    width: 15rem;
+    position: absolute;
+    top: -750%;
+    left: calc(100% - 15rem);
+}
+
+.card-dashboard-text {
+    position: relative;
+}
+
+.table-button {
+    font-weight: 600;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.table-button.edit {
+    background-color: rgb(52, 145, 207);
+}
+
+.table-button.delete {
+    background-color: rgb(207, 52, 52);
+}
+
+.table-button.inventory {
+    background-color: rgb(207, 142, 52);
+}
+
+.active {
+    background-color: hsla(0, 0%, 100%, 10%);
+}
+
+/*
+    .---------------.
+    | Design system |
+    '---------------'
+*/
