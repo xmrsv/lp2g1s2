@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Estílos -->
+    <link rel="stylesheet" th:href="@{/styles/admin.css}">
+</head>
+
+
+<body>
+    <form th:action="@{/admin/products/save-product}" method="post" enctype="multipart/form-data">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" placeholder="Ingrese el nombre del producto" autocomplete="off"
+            required>
+
+        <label for="description">Descripción:</label>
+        <textarea id="description" name="description" placeholder="Ingrese la descripcion del producto" required
+            autocomplete="off"> </textarea>
+        <label for="price">Precio:</label>
+        <input type="number" step="any" id="price" name="price" placeholder="Ingrese el precio del producto"
+            autocomplete="off" required>
+
+        <label for="img">Imagen:</label>
+        <input type="file" id="img" name="img">
+
+        <button type="submit" class="btn btn-success">
+            Guardar
+        </button>
+
+    </form>
+
+</body>
+
+</html>
