@@ -1,7 +1,9 @@
 package upeu.edu.pe.lp2g1s2.infrastructure.entity.controller;
 
 import java.io.IOException;
-import org.slf4j.*;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
