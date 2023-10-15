@@ -4,6 +4,7 @@ import upeu.edu.pe.lp2g1s2.app.repository.UserRepository;
 import upeu.edu.pe.lp2g1s2.infrastructure.entity.UserEntity;
 
 public class UserService {
+
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
