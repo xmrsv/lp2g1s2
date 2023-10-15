@@ -1,10 +1,13 @@
-HELP.md
+# Ignore general build files
 target/
+*.class
+
+# Maven specific ignores
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### STS ###
+# Ignore STS (Spring Tool Suite) specific files
 .apt_generated
 .classpath
 .factorypath
@@ -13,13 +16,13 @@ target/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
+# Ignore IntelliJ IDEA specific files
 .idea
 *.iws
 *.iml
 *.ipr
 
-### NetBeans ###
+# Ignore NetBeans specific files
 /nbproject/private/
 /nbbuild/
 /dist/
@@ -31,5 +34,5 @@ build/
 /images
 nbactions.xml
 
-### VS Code ###
+# Ignore Visual Studio Code specific files
 .vscode/
