@@ -46,9 +46,8 @@ public class ProductController {
     @GetMapping("/show")
     public String showProduct(Model model) {
         // log.info("id user desde la variable de session: {}");
-        UserEntity user = new UserEntity();
-        user.setId(1);
-        Iterable<ProductEntity> products = productService.getProductsByUser(user);
+        
+        Iterable<ProductEntity> products = productService.getProducts();
         model.addAttribute("products", products);
         return "admin/products/show";
     }
