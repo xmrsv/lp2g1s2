@@ -40,8 +40,8 @@
 
                     <p class="description" th:text="${product.description}">description</p>
 
-                    <a class="button" th:href="@{/product-detail/{productid} (productid = ${product.id})}"
-                        class="btn btn-success">Ver
+                    <a th:href="@{/product-detail/{productid} (productid=${product.id})}"
+                        class="btn btn-success button">Ver
                         Producto</a>
                 </span>
             </div>
