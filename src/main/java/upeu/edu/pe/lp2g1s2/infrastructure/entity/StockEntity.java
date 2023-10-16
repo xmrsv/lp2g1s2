@@ -15,7 +15,6 @@ public class StockEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String description;
     private Integer entries;
     private Integer exits;
@@ -83,17 +82,5 @@ public class StockEntity {
 
     public void setProductEntity(ProductEntity productEntity) {
         this.productEntity = productEntity;
-    }
-
-    @Override
-    public String toString() {
-        return "StockEntity{"
-                + "id=" + id
-                + ", description='" + description + '\''
-                + ", entries=" + entries
-                + ", exits=" + exits
-                + ", balance=" + balance
-                + ", productEntity=" + productEntity
-                + '}';
     }
 }
