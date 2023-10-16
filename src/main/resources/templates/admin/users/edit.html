@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Edit user</title>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <link rel="stylesheet" th:href="@{/styles/form.css}">
+    </head>
+    <body>
+
+        <div class="container">
+            <h2>Editar</h2>
+            <form class="form-horizontal" th:action="@{/admin/users/save-user}" method="post"  enctype="multipart/form-data">
+
+                <input type="hidden" name="id" th:value="${user.id}">
+
+                <label for="address">Dirección</label>
+                <input 
+                    type="text"
+                    th:value="${user.address}"
+                    id="address" 
+                    name="address" 
+                    placeholder="address"
+                    required 
+                    autocomplete="off"
+                    />
+                <br>
+
+                <label for="address">Número de celular</label>
+                <input 
+                    type="text" 
+                    th:value="${user.cellphone}"
+                    id="cellphone" 
+                    name="cellphone" 
+                    placeholder="cellphone" 
+                    required 
+                    autocomplete="off"
+                    /> 
+                <br>
+
+                <label for="address">Correo electrónico</label>
+                <input 
+                    type="text"
+                    th:value="${user.email}"
+                    id="email" 
+                    name="email" 
+                    placeholder="email" 
+                    required 
+                    autocomplete="off"
+                    /> 
+                <br>
+
+                <label for="address">Primer nombre</label>
+                <input 
+                    type="text"
+                    th:value="${user.firstName}"
+                    id="firstName" 
+                    name="firstName"
+                    placeholder="firstName"
+                    required 
+                    autocomplete="off"
+                    />
+                <br>
+
+                <label for="address">Primer apellido</label>
+                <input 
+                    type="text" 
+                    th:value="${user.lastName}"
+                    id="lastName" 
+                    name="lastName" 
+                    placeholder="lastName" 
+                    required 
+                    autocomplete="off"
+                    />
+                <br>
+
+                <label for="address">Nombre de usuario</label>
+                <input 
+                    type="text" 
+                    th:value="${user.username}"
+                    id="username" 
+                    name="username"
+                    placeholder="username"
+                    required 
+                    autocomplete="off"
+                    />
+                <br>
+
+                <label for="address">Contraseña</label>
+                <input 
+                    type="text"
+                    th:value="${user.password}"
+                    id="password"
+                    name="password"
+                    placeholder="password"
+                    required 
+                    autocomplete="off"
+                    />
+                <br>
+
+                <label for="address">Tipo de usuario</label>
+                <input 
+                    type="text"
+                    th:value="${user.userType}"
+                    id="userType"
+                    name="userType"
+                    placeholder="userType"
+                    required 
+                    autocomplete="off"
+                    />
+                <br>
+
+                <button class="btn btn-success" type="submit">
+                    Guardar
+                </button>
+            </form>
+
+
+        </div>
+    </body>
+</html>

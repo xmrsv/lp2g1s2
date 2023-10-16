@@ -12,12 +12,14 @@ import upeu.edu.pe.lp2g1s2.infrastructure.entity.UserEntity;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final UserService userService;
     private final UploadFile uploadFile;
     private final Logger log = LoggerFactory.getLogger(ProductService.class);
 
-    public ProductService(ProductRepository productRepository, UploadFile uploadFile) {
+    public ProductService(ProductRepository productRepository, UploadFile uploadFile, UserService userService) {
         this.productRepository = productRepository;
         this.uploadFile = uploadFile;
+        this.userService = userService;
     }
 
     public Iterable<ProductEntity> getProducts() {
@@ -32,31 +34,41 @@ public class ProductService {
         return productRepository.getProductById(id);
     }
 
-    public ProductEntity saveProduct(ProductEntity product, MultipartFile multipartFile) throws IOException {
+    public ProductEntity saveProduct(ProductEntity product, MultipartFile multipartFile, Integer userId) throws IOException {
+        // Busca el UserEntity por ID
+        UserEntity user = userService.getUserById(userId);
+
+        // Si el usuario no existe, lanza una excepción
+        if (user == null) {
+            throw new IllegalArgumentException("El usuario con ID " + userId + " no existe.");
+        }
+
+        // Establece el UserEntity en el producto
+        product.setUserEntity(user);
+
         if (product.getId() == null) {
-            UserEntity user = new UserEntity();
-            user.setId(1);
             product.setDateCreated(LocalDateTime.now());
             product.setDateUpdated(LocalDateTime.now());
-            product.setUserEntity(user);
             product.setImage(uploadFile.upload(multipartFile));
             return productRepository.saveProduct(product);
-
         } else {
             ProductEntity productDB = productRepository.getProductById(product.getId());
-            // logger para ver en consola el producto a editar
+
+            // Si el producto no existe, lanza una excepción
+            if (productDB == null) {
+                throw new IllegalArgumentException("El producto con ID " + product.getId() + " no existe.");
+            }
+
             if (multipartFile.isEmpty()) {
                 product.setImage(productDB.getImage());
             } else {
-                // se guardará la imagen que se envia actualmente
-                // antes se elimina pero si no es por defecto
                 if (!productDB.getImage().equals("default.jpg")) {
                     uploadFile.delete(productDB.getImage());
                 }
                 product.setImage(uploadFile.upload(multipartFile));
             }
+
             log.info("product: {}", productDB);
-            // sino se carga la imagen toma la que se le guardo al registro
 
             product.setCode(productDB.getCode());
             product.setUserEntity(productDB.getUserEntity());
@@ -64,11 +76,9 @@ public class ProductService {
             product.setDateUpdated(LocalDateTime.now());
             return productRepository.saveProduct(product);
         }
-
     }
 
     public void deleteProductById(Integer id) {
         productRepository.deleteProductById(id);
     }
-
 }

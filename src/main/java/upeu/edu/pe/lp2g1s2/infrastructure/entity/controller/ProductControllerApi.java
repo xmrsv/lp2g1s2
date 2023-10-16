@@ -28,25 +28,13 @@ public class ProductControllerApi {
         this.productService = productService;
     }
 
-    /**
-     * Guardar un producto junto con una imagen.
-     *
-     * @param product El producto a guardar.
-     * @param multipartFile La imagen del producto.
-     * @throws IOException Si ocurre un error durante la carga de la imagen.
-     */
     @PostMapping("/save-product")
     public void saveProduct(
             @ModelAttribute ProductEntity product,
-            @RequestParam("img") MultipartFile multipartFile) throws IOException {
-        productService.saveProduct(product, multipartFile);
+            @RequestParam("img") MultipartFile multipartFile, Integer userId) throws IOException {
+        productService.saveProduct(product, multipartFile, userId);
     }
 
-    /**
-     * Ver todos los productos.
-     *
-     * @return Una lista de productos.
-     */
     @GetMapping("/show")
     public Iterable<ProductEntity> showProduct() {
         UserEntity user = new UserEntity();
@@ -54,24 +42,11 @@ public class ProductControllerApi {
         return productService.getProductsByUser(user);
     }
 
-    /**
-     * Obtener un producto por su ID.
-     *
-     * @param id El ID del producto a buscar.
-     * @return El producto encontrado.
-     */
     @GetMapping("/show/{id}")
     public ProductEntity show(@PathVariable Integer id) {
         return productService.getProductById(id);
     }
 
-    /**
-     * Editar un producto existente por su ID.
-     *
-     * @param product El producto actualizado.
-     * @param id El ID del producto a actualizar.
-     * @return El producto actualizado.
-     */
     @PutMapping("/edit/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public ProductEntity editProduct(
@@ -87,11 +62,6 @@ public class ProductControllerApi {
         return null;
     }
 
-    /**
-     * Eliminar un producto por su ID.
-     *
-     * @param id El ID del producto a eliminar.
-     */
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteProduct(@PathVariable Integer id) {

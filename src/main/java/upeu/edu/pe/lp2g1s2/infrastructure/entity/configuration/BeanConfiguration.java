@@ -6,24 +6,21 @@ import upeu.edu.pe.lp2g1s2.app.repository.ProductRepository;
 import upeu.edu.pe.lp2g1s2.app.repository.StockRepository;
 import upeu.edu.pe.lp2g1s2.app.repository.UserRepository;
 import upeu.edu.pe.lp2g1s2.app.service.ProductService;
-import upeu.edu.pe.lp2g1s2.app.service.UserService;
 import upeu.edu.pe.lp2g1s2.app.service.StockService;
 import upeu.edu.pe.lp2g1s2.app.service.UploadFile;
+import upeu.edu.pe.lp2g1s2.app.service.UserService;
 
-/**
- * Configuración de beans para la aplicación.
- */
 @Configuration
 public class BeanConfiguration {
 
     @Bean
-    public ProductService productService(ProductRepository productRepository, UploadFile uploadFile) {
-        return new ProductService(productRepository, uploadFile);
+    public ProductService productService(ProductRepository productRepository, UploadFile uploadFile, UserService userService) {
+        return new ProductService(productRepository, uploadFile, userService);
     }
 
     @Bean
-    public UserService userService(UserRepository userRepository) {
-        return new UserService(userRepository);
+    public UserService userService(UserRepository userRepository, ProductRepository productRepository) {
+        return new UserService(userRepository, productRepository);
     }
 
     @Bean

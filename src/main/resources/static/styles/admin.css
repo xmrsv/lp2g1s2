@@ -65,13 +65,11 @@ ul {
 table {
     display: block;
     width: 100%;
-    overflow-x: auto;
     border-radius: 1rem;
 }
 
 table tbody {
     display: block;
-    overflow: hidden;
 }
 
 table tr:nth-child(odd) {
@@ -85,13 +83,6 @@ table tbody tr {
     padding: 1rem;
 }
 
-table tbody tr:first-child {
-    border-radius: 0 1rem 0 0;
-}
-
-table tbody tr:last-child {
-    border-radius: 0 0 1rem 0;
-}
 
 
 table tbody th {
@@ -228,12 +219,14 @@ footer {
 }
 
 .custom-button {
+    text-decoration: none;
     border-radius: 1rem;
     display: flex;
     align-items: center;
     text-decoration: none;
     font-weight: 600;
     padding: 0.5rem;
+    color: inherit;
     color: var(--text-color);
     transition: background-color 100ms ease-in-out;
 }
@@ -313,8 +306,8 @@ footer {
     background-color: hsla(0, 0%, 100%, 10%);
 }
 
-/*
-    .---------------.
-    | Design system |
-    '---------------'
-*/
+.table-wrapper {
+    min-width: min-content;
+    border-radius: 1rem;
+    overflow-x: auto;
+}

@@ -11,6 +11,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.List;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "orders")
@@ -27,6 +29,7 @@ public class OrderEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private UserEntity userEntity;
 
     @OneToMany(mappedBy = "order")
@@ -43,7 +46,6 @@ public class OrderEntity {
         this.orderDetails = orderDetails;
     }
 
-    // Getters y setters
     public Integer getId() {
         return id;
     }

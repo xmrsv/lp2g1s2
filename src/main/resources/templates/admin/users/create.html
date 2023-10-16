@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Save user</title>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <link rel="stylesheet" th:href="@{/styles/form.css}">
+    </head>
+
+
+
+
+    <body>
+        <form enctype="multipart/form-data" method="post" th:action="@{/admin/users/save-user}">
+
+            <label for="address">Dirección</label>
+            <input 
+                type="text"
+                id="address" 
+                name="address" 
+                placeholder="address"
+                required 
+                autocomplete="off"
+                />
+            <br>
+
+            <label for="address">Número de celular</label>
+            <input 
+                type="text" 
+                id="cellphone" 
+                name="cellphone" 
+                placeholder="cellphone" 
+                required 
+                autocomplete="off"
+                /> 
+            <br>
+
+            <label for="address">Correo electrónico</label>
+            <input 
+                type="text" 
+                id="email" 
+                name="email" 
+                placeholder="email" 
+                required 
+                autocomplete="off"
+                /> 
+            <br>
+
+            <label for="address">Primer nombre</label>
+            <input 
+                type="text"
+                id="firstName" 
+                name="firstName"
+                placeholder="firstName"
+                required 
+                autocomplete="off"
+                />
+            <br>
+
+            <label for="address">Primer apellido</label>
+            <input 
+                type="text" 
+                id="lastName" 
+                name="lastName" 
+                placeholder="lastName" 
+                required 
+                autocomplete="off"
+                />
+            <br>
+
+            <label for="address">Nombre de usuario</label>
+            <input 
+                type="text" 
+                id="username" 
+                name="username"
+                placeholder="username"
+                required 
+                autocomplete="off"
+                />
+            <br>
+
+            <label for="address">Contraseña</label>
+            <input 
+                type="text"
+                id="password"
+                name="password"
+                placeholder="password"
+                required 
+                autocomplete="off"
+                />
+            <br>
+
+            <label for="address">Tipo de usuario</label>
+            <input 
+                type="text"
+                id="userType"
+                name="userType"
+                placeholder="userType"
+                required 
+                autocomplete="off"
+                />
+            <br>
+
+            <button type="submit">
+                Guardar
+            </button>
+
+        </form>
+
+    </body>
+
+</html>

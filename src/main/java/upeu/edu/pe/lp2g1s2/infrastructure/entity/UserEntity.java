@@ -47,9 +47,6 @@ public class UserEntity {
     @Column(name = "user_type")
     private UserType userType;
 
-    public UserEntity() {
-    }
-
     public UserEntity(Integer id, String username, String firstName, String lastName, String email, String address, String cellphone, String password, LocalDateTime dateCreated, LocalDateTime dateUpdated, UserType userType) {
         this.id = id;
         this.username = username;
@@ -64,12 +61,7 @@ public class UserEntity {
         this.userType = userType;
     }
 
-    public LocalDateTime getDateUpdated() {
-        return dateUpdated;
-    }
-
-    public void setDateUpdated(LocalDateTime dateUpdated) {
-        this.dateUpdated = dateUpdated;
+    public UserEntity() {
     }
 
     public Integer getId() {
@@ -144,6 +136,14 @@ public class UserEntity {
         this.dateCreated = dateCreated;
     }
 
+    public LocalDateTime getDateUpdated() {
+        return dateUpdated;
+    }
+
+    public void setDateUpdated(LocalDateTime dateUpdated) {
+        this.dateUpdated = dateUpdated;
+    }
+
     public UserType getUserType() {
         return userType;
     }
@@ -152,8 +152,4 @@ public class UserEntity {
         this.userType = userType;
     }
 
-    @Override
-    public String toString() {
-        return "UserEntity{" + "id=" + id + ", username=" + username + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", address=" + address + ", cellphone=" + cellphone + ", password=" + password + ", dateCreated=" + dateCreated + ", dateUpdated=" + dateUpdated + ", userType=" + userType + '}';
-    }
 }

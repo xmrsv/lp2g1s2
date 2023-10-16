@@ -6,6 +6,7 @@ import upeu.edu.pe.lp2g1s2.infrastructure.entity.UserEntity;
 
 @Repository
 public class UserRepositoryImpl implements UserRepository {
+
     private final UserCrudRepository userCrudRepository;
 
     public UserRepositoryImpl(UserCrudRepository userCrudRepository) {
@@ -28,4 +29,8 @@ public class UserRepositoryImpl implements UserRepository {
         userCrudRepository.deleteById(id);
     }
 
+    @Override
+    public UserEntity getUserById(Integer id) {
+        return userCrudRepository.findById(id).get();
+    }
 }

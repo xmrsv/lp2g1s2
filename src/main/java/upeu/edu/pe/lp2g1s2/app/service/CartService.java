@@ -8,43 +8,44 @@ import upeu.edu.pe.lp2g1s2.app.domain.ItemCart;
 
 public class CartService {
 
-    private List<ItemCart> itemCarts; // Lista de elementos en el carrito
-    private HashMap<Integer, ItemCart> itemCartHashMap; // Mapa para realizar un seguimiento de los elementos en el carrito
+    private List<ItemCart> itemCarts;
+    private HashMap<Integer, ItemCart> itemCartHashMap;
 
     public CartService() {
         this.itemCartHashMap = new HashMap<>();
         this.itemCarts = new ArrayList<>();
     }
 
-    public void addItemToCart(Integer quantity, Integer id, String nameProduct, BigDecimal price) {
-        ItemCart itemCart = new ItemCart(id, nameProduct, quantity, price);
-        itemCartHashMap.put(itemCart.getId(), itemCart);
+    public void addItemCart(Integer idProduct, String nameProduct, Integer quantity,
+            BigDecimal price) {
+        ItemCart itemCart = new ItemCart(idProduct, nameProduct, quantity, price);
+        itemCartHashMap.put(itemCart.getIdProduct(), itemCart);
         fillList();
     }
 
     public BigDecimal getTotalCart() {
         BigDecimal total = BigDecimal.ZERO;
-
         for (ItemCart itemCart : itemCarts) {
-            total = total.add(itemCart.getTotalPricePerItem());
+            total = total.add(itemCart.getTotalPriceItem());
         }
-
         return total;
     }
 
-    public void removeItemFromCart(Integer id) {
-        itemCartHashMap.remove(id);
+    public void removeItemCart(Integer idProduct) {
+        itemCartHashMap.remove(idProduct);
         fillList();
     }
 
-    public void removeAllItemsFromCart() {
+    public void removeAllItemsCart() {
         itemCartHashMap.clear();
         itemCarts.clear();
     }
 
     private void fillList() {
         itemCarts.clear();
-        itemCartHashMap.forEach((id, itemCart) -> itemCarts.add(itemCart));
+        itemCartHashMap.forEach(
+                (integer, ItemCart) -> itemCarts.add(ItemCart)
+        );
     }
 
     public List<ItemCart> getItemCarts() {

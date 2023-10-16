@@ -9,4 +9,6 @@ public interface UserRepository {
     Iterable<UserEntity> getUsers();
 
     void deleteUserById(Integer id);
+    
+    UserEntity getUserById(Integer id);
 }
