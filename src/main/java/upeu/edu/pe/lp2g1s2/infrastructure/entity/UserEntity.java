@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import org.springframework.data.annotation.CreatedDate;
 
 @Entity
 @Table(name = "users")
@@ -36,7 +37,11 @@ public class UserEntity {
     private String password;
 
     @Column(name = "date_created")
+    @CreatedDate
     private LocalDateTime dateCreated;
+
+    @Column(name = "date_updated")
+    private LocalDateTime dateUpdated;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "user_type")
@@ -45,7 +50,7 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    public UserEntity(Integer id, String username, String firstName, String lastName, String email, String address, String cellphone, String password, LocalDateTime dateCreated, UserType userType) {
+    public UserEntity(Integer id, String username, String firstName, String lastName, String email, String address, String cellphone, String password, LocalDateTime dateCreated, LocalDateTime dateUpdated, UserType userType) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
@@ -55,7 +60,16 @@ public class UserEntity {
         this.cellphone = cellphone;
         this.password = password;
         this.dateCreated = dateCreated;
+        this.dateUpdated = dateUpdated;
         this.userType = userType;
+    }
+
+    public LocalDateTime getDateUpdated() {
+        return dateUpdated;
+    }
+
+    public void setDateUpdated(LocalDateTime dateUpdated) {
+        this.dateUpdated = dateUpdated;
     }
 
     public Integer getId() {
@@ -140,17 +154,6 @@ public class UserEntity {
 
     @Override
     public String toString() {
-        return "UserEntity{"
-                + "id=" + id
-                + ", username='" + username + '\''
-                + ", firstName='" + firstName + '\''
-                + ", lastName='" + lastName + '\''
-                + ", email='" + email + '\''
-                + ", address='" + address + '\''
-                + ", cellphone='" + cellphone + '\''
-                + ", password='" + password + '\''
-                + ", dateCreated=" + dateCreated
-                + ", userType=" + userType
-                + '}';
+        return "UserEntity{" + "id=" + id + ", username=" + username + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", address=" + address + ", cellphone=" + cellphone + ", password=" + password + ", dateCreated=" + dateCreated + ", dateUpdated=" + dateUpdated + ", userType=" + userType + '}';
     }
 }
