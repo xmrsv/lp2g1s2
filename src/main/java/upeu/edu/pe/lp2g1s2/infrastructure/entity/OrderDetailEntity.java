@@ -10,6 +10,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import org.springframework.data.annotation.CreatedDate;
 
 @Entity
 @Table(name = "order_detail")
@@ -33,6 +34,7 @@ public class OrderDetailEntity {
     private BigDecimal precioTotal;
 
     @Column(name = "date_created")
+    @CreatedDate
     private LocalDateTime dateCreated;
 
     @Column(name = "date_updated")
@@ -51,7 +53,6 @@ public class OrderDetailEntity {
         this.dateUpdated = dateUpdated;
     }
 
-    // Getters y setters
     public Integer getId() {
         return id;
     }
