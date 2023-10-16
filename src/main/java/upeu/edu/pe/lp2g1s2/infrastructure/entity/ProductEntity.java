@@ -11,10 +11,12 @@ import jakarta.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
+import org.springframework.data.annotation.CreatedDate;
 
 @Entity
 @Table(name = "products")
 public class ProductEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -25,6 +27,7 @@ public class ProductEntity {
     private BigDecimal price;
 
     @Column(name = "date_created")
+    @CreatedDate
     private LocalDateTime dateCreated;
 
     @Column(name = "date_updated")
